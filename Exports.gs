@@ -1,5 +1,9 @@
 var Exports = {
 
+  get bmChroma () {
+    return bmChroma
+  },
+
   get Schemer () {
     return this.guard(Schemer)
   },
