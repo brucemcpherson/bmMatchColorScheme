@@ -7,7 +7,8 @@
       {
         "userSymbol": "bmChroma",
         "libraryId": "1zjBPTX8meADK6W2tbw-sNB0479OMN2hhT1O5MGna7v5liAj7paj-W8QE",
-        "version": "3"
+        "version": "0",
+        "developmentMode": true
       }
     ]
   }
