@@ -1,5 +1,5 @@
 # Google Apps Script Project: bmMatchColorScheme
-This repo (bmMatchColorScheme) was automatically updated on 8/1/2023, 12:42:39 PM by GasGit
+This repo (bmMatchColorScheme) was automatically updated on 1/31/2024, 1:15:53 PM by GasGit
 
 For more information on gasgit, see the [desktop liberation site](https://ramblings.mcpher.com/drive-sdk-and-github/migrategasgit/ "desktop liberation")
 
@@ -21,11 +21,11 @@ Schemer| server_js
 ### Directly referenced libraries
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
-bmChroma| bmChroma|1zjBPTX8meADK6W2tbw-sNB0479OMN2hhT1O5MGna7v5liAj7paj-W8QE|3|no|[here](libraries/bmChroma "library source")
+bmChroma| bmChroma|1zjBPTX8meADK6W2tbw-sNB0479OMN2hhT1O5MGna7v5liAj7paj-W8QE|0|no|[here](libraries/bmChroma "library source")
 ### All dependencies and sub dependencies
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
-bmChroma| bmChroma|1zjBPTX8meADK6W2tbw-sNB0479OMN2hhT1O5MGna7v5liAj7paj-W8QE|3|no|[here](libraries/bmChroma "library source")
+bmChroma| bmChroma|1zjBPTX8meADK6W2tbw-sNB0479OMN2hhT1O5MGna7v5liAj7paj-W8QE|0|no|[here](libraries/bmChroma "library source")
 ### Enabled Google Services
 no libraries discovered
 ### Scopes required
