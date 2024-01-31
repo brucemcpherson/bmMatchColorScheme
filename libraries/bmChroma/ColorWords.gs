@@ -35,15 +35,24 @@ const ColorWords = (() => {
    * @param {string} text some trext that may or may not contain recognizable color names
    * @return {ColorNames} a string array of colorNames and the original text 
    */
-  const discover = (text) => ({
-    text,
-    colorNames: text.replace(/\W/g, " ")
-      .replace(/\s+/g, " ")
-      .split(" ")
-      .filter(f => f)
-      .map(f => f.toLowerCase())
-      .filter(f => Exports.chroma.valid(f))
-  })
+  const discover = (text) => {
+    const s = Exports.Schemes
+    
+    return {
+      text,
+      colorNames: text.replace(/[^\w-]/g, " ")
+        .replace(/\s+/g, " ")
+        .split(" ")
+        .filter(f => f)
+        .map(f => f.toLowerCase())
+        .filter(f => {
+          // see if its a scheme color name
+          const color = s.getColor (f, false)
+          return Exports.chroma.valid(color || f)
+        })
+    }
+  }
+
 
   const mixer = ({ colors, weights, mode = 'rgb' }) => {
     const ch = getChroma()
@@ -67,10 +76,20 @@ const ColorWords = (() => {
     const ch = getChroma()
     return ch(color).luminance(mode) > minLuminance ? dark : light
   }
-
-
-  // exportable for getting the chroma object
-  const getChroma = () => Exports.chroma
+  const getChroma = () => {
+    return new Proxy(Exports.chroma, {
+      apply(target, thisArg, args) {
+        // we can first check if the colors appear in any schemes before having chroma check
+        if (args && args[0] && typeof args[0] === 'string') {
+          const s = Exports.Schemes
+          const color = s.getColor(args[0], false)
+          return target.apply(thisArg, color ? [color].concat(args.slice(1)) : args)
+        } else {
+          return target.apply(thisArg, args)
+        }
+      }
+    });
+  }
 
   /**
    * @param {*} color any kind of colordefinition that chroma would understand
@@ -80,6 +99,7 @@ const ColorWords = (() => {
     const ch = getChroma()
     const base = ch(color)
     return {
+      color,
       base,
       hex: base.hex(),
       contrast: getContrast(base),
@@ -93,7 +113,6 @@ const ColorWords = (() => {
    * @return {TextToColors} the result of analyzing the text 
    */
   const getColors = (text) => {
-    const ch = getChroma()
 
     // find possible colors in phrase
     const discovered = discover(text)
