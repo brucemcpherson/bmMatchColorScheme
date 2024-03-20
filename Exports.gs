@@ -1,3 +1,4 @@
+// for visibility in callers
 var Exports = {
 
   get bmChroma () {
