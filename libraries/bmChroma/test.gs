@@ -1,5 +1,5 @@
 function test() {
-
+  // basic test - see bmtestcolorcheme for more
   const t = Exports.Schemes.getColor
   const c = ColorWords.getChroma()
   console.log(JSON.stringify(
